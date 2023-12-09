@@ -1,7 +1,7 @@
 services:
     nodered:
         container_name: nodered
-        image: william1608/node-red-ffmpeg:1.0.2 # https://hub.docker.com/r/nodered/node-red/tags
+        image: william1608/node-red-ffmpeg:$VERSION
         environment:
          - TZ=Europe/Rome
          - NODE_RED_ENABLE_SAFE_MODE='false'
