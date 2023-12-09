@@ -29,11 +29,11 @@ try latest docker [image](https://hub.docker.com/r/william1608/node-red-ffmpeg/t
 
 ```docker compose```
  
- [here]() compose file example
+ [here](https://github.com/william89731/node-red-ffmpeg/blob/main/docker-compose.yml) compose file example
 
 ```Run nvr```
 
-this [flow] run nvr (mode live view/mode record),object detection and send image to telegram:  
+this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/nvr.json) run nvr (mode live view/mode record),object detection and send image to telegram:  
  
 ![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/53d27bd4-a421-47da-b6a4-a6fc22858a84)
 
