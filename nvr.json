@@ -1,0 +1,671 @@
+[
+    {
+        "id": "947cabf7cfa791b2",
+        "type": "group",
+        "z": "4dea72f0d307fbc7",
+        "name": "nvr",
+        "style": {
+            "stroke": "#ff0000",
+            "label": true
+        },
+        "nodes": [
+            "ff1aa33006255f64",
+            "3bbf75715ccbdd0c",
+            "d2212c6c986af252",
+            "d26a41e06119a168",
+            "e955b5e1eb796fee",
+            "d4b84ca66f5c2aae",
+            "4ce4f30988b1ba16",
+            "c324c20cf3b6307c",
+            "a1eb997ab248a089",
+            "d455afcffc3ba5f2",
+            "157a11dcd3604621",
+            "7d048b072d5f9d35",
+            "434c867e40fc8ffd",
+            "d763a7720fc3a6ed",
+            "2bb572a3819c511e",
+            "f1766cfee6dfcda9",
+            "d0fc53be9e54cd4d",
+            "b9f425327f85ac94",
+            "f16deba937b8e901",
+            "fe187561f7d32fcd",
+            "cf5faa6020ee0608",
+            "09f1ec8bf048f12b",
+            "79068c94507a1ab9",
+            "917e211469b0d6b3",
+            "784b3331d1a94ebf",
+            "db55249ca937669b",
+            "157fe17aca52c1f8"
+        ],
+        "x": 54,
+        "y": 79,
+        "w": 1372,
+        "h": 422
+    },
+    {
+        "id": "ff1aa33006255f64",
+        "type": "exec",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "command": "ffmpeg -y -i \"rtsp://USER:PASS@IP:554/cam/realmonitor?channel=1&subtype=00\" -vframes 1 -f image2pipe -vcodec png -",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "imou",
+        "x": 910,
+        "y": 400,
+        "wires": [
+            [
+                "d26a41e06119a168"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3bbf75715ccbdd0c",
+        "type": "image",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": true,
+        "outputs": 1,
+        "x": 1240,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2212c6c986af252",
+        "type": "template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"250px\" height=\"250px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 1060,
+        "y": 420,
+        "wires": [
+            [
+                "e955b5e1eb796fee"
+            ]
+        ]
+    },
+    {
+        "id": "d26a41e06119a168",
+        "type": "base64",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 1060,
+        "y": 360,
+        "wires": [
+            [
+                "d2212c6c986af252",
+                "3bbf75715ccbdd0c"
+            ]
+        ]
+    },
+    {
+        "id": "e955b5e1eb796fee",
+        "type": "ui_template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "group": "3d7fa0de220eb09c",
+        "name": "imou",
+        "order": 7,
+        "width": 6,
+        "height": 5,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1050,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d4b84ca66f5c2aae",
+        "type": "ui_switch",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "ip cam",
+        "label": "",
+        "tooltip": "",
+        "group": "3d7fa0de220eb09c",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "fa-video-camera fa-3x",
+        "oncolor": "yellow",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "fa-video-camera fa-3x",
+        "offcolor": "grey",
+        "animate": false,
+        "className": "",
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "a1eb997ab248a089",
+                "09f1ec8bf048f12b"
+            ]
+        ]
+    },
+    {
+        "id": "4ce4f30988b1ba16",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "alert",
+        "func": "let frame = msg.payload;\n\nmsg.payload = []\nmsg.payload.chatId = \"XXXXXXXXXXXX\";\nmsg.payload.type = \"photo\";\nmsg.payload.content = frame\nmsg.payload.caption = \"target acquired\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1270,
+        "y": 160,
+        "wires": [
+            [
+                "c324c20cf3b6307c"
+            ]
+        ]
+    },
+    {
+        "id": "c324c20cf3b6307c",
+        "type": "telegram sender",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "bot": "",
+        "haserroroutput": true,
+        "outputs": 2,
+        "x": 1310,
+        "y": 120,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a1eb997ab248a089",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "cam",
+        "func": "if(msg.payload == \"on\"){\n    msg.payload = \"cam on\"\nreturn msg;    \n}\n\nif(msg.payload == \"off\"){\n    msg.payload = \"cam off\"\nreturn msg;    \n}\n\nelse{\n    return null \n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 220,
+        "wires": [
+            [
+                "f1766cfee6dfcda9"
+            ]
+        ]
+    },
+    {
+        "id": "d455afcffc3ba5f2",
+        "type": "link in",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "link in 19",
+        "links": [
+            "be551b46d0895a7d"
+        ],
+        "x": 215,
+        "y": 260,
+        "wires": [
+            [
+                "db55249ca937669b",
+                "157fe17aca52c1f8"
+            ]
+        ]
+    },
+    {
+        "id": "157a11dcd3604621",
+        "type": "good-object-detection",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "OD",
+        "returnValue": 0,
+        "model": "yolov8n",
+        "threshold": 0.5,
+        "absolutePathDir": "",
+        "x": 910,
+        "y": 120,
+        "wires": [
+            [
+                "7d048b072d5f9d35"
+            ]
+        ]
+    },
+    {
+        "id": "7d048b072d5f9d35",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "person detect?",
+        "func": "data = msg.payload.data.person;\n\nif(data){\n    msg.payload = msg.payload.originImg\nreturn msg;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 120,
+        "wires": [
+            [
+                "434c867e40fc8ffd"
+            ]
+        ]
+    },
+    {
+        "id": "434c867e40fc8ffd",
+        "type": "image",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": true,
+        "outputs": 1,
+        "x": 1100,
+        "y": 160,
+        "wires": [
+            [
+                "4ce4f30988b1ba16"
+            ]
+        ]
+    },
+    {
+        "id": "d763a7720fc3a6ed",
+        "type": "comment",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "<<<< trigger",
+        "info": "",
+        "x": 150,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2bb572a3819c511e",
+        "type": "ui_switch",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "mode",
+        "label": "",
+        "tooltip": "",
+        "group": "3d7fa0de220eb09c",
+        "order": 4,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "record",
+        "onvalueType": "str",
+        "onicon": "fa-fire  fa-3x",
+        "oncolor": "red",
+        "offvalue": "live",
+        "offvalueType": "str",
+        "officon": "fa-eye fa-3x",
+        "offcolor": "blue",
+        "animate": false,
+        "className": "",
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "b9f425327f85ac94",
+                "79068c94507a1ab9"
+            ]
+        ]
+    },
+    {
+        "id": "f1766cfee6dfcda9",
+        "type": "ui_template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "group": "3d7fa0de220eb09c",
+        "name": "",
+        "order": 2,
+        "width": 2,
+        "height": 1,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 500,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0fc53be9e54cd4d",
+        "type": "ui_template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "group": "3d7fa0de220eb09c",
+        "name": "",
+        "order": 5,
+        "width": 2,
+        "height": 1,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 490,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9f425327f85ac94",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "mode",
+        "func": "if(msg.payload == \"record\"){\n    msg.payload = \"mode record\"\nreturn msg;    \n}\n\nif(msg.payload == \"live\"){\n    msg.payload = \"mode live view\"\nreturn msg;    \n}\n\nelse{\n    return null \n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 380,
+        "wires": [
+            [
+                "d0fc53be9e54cd4d"
+            ]
+        ]
+    },
+    {
+        "id": "f16deba937b8e901",
+        "type": "switch",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "record",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "live",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "fe187561f7d32fcd"
+            ],
+            [
+                "ff1aa33006255f64"
+            ]
+        ]
+    },
+    {
+        "id": "fe187561f7d32fcd",
+        "type": "exec",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "command": "ffmpeg -y -i \"rtsp://USER:PASS@IP:554/cam/realmonitor?channel=1&subtype=00\" -vframes 1 -f image2pipe -vcodec png -",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "imou",
+        "x": 910,
+        "y": 160,
+        "wires": [
+            [
+                "157a11dcd3604621"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cf5faa6020ee0608",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "state cam",
+        "func": "const cam = global.get(\"cam\")\nif(cam == \"on\"){\n        \nreturn msg;    \n}\n\nelse{\n    return null \n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 320,
+        "wires": [
+            [
+                "f16deba937b8e901"
+            ]
+        ]
+    },
+    {
+        "id": "09f1ec8bf048f12b",
+        "type": "change",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "cam",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79068c94507a1ab9",
+        "type": "change",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mode",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "917e211469b0d6b3",
+        "type": "function",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "state mode",
+        "func": "msg.payload = global.get(\"mode\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 280,
+        "wires": [
+            [
+                "cf5faa6020ee0608"
+            ]
+        ]
+    },
+    {
+        "id": "784b3331d1a94ebf",
+        "type": "inject",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 730,
+        "y": 240,
+        "wires": [
+            [
+                "917e211469b0d6b3"
+            ]
+        ]
+    },
+    {
+        "id": "db55249ca937669b",
+        "type": "template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "on",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "on",
+        "output": "str",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "d4b84ca66f5c2aae"
+            ]
+        ]
+    },
+    {
+        "id": "157fe17aca52c1f8",
+        "type": "template",
+        "z": "4dea72f0d307fbc7",
+        "g": "947cabf7cfa791b2",
+        "name": "record",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "record",
+        "output": "str",
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "2bb572a3819c511e"
+            ]
+        ]
+    },
+    {
+        "id": "3d7fa0de220eb09c",
+        "type": "ui_group",
+        "name": "ip cams",
+        "tab": "8b42388d614fb38a",
+        "order": 1,
+        "disp": false,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8b42388d614fb38a",
+        "type": "ui_tab",
+        "name": "RTSP",
+        "icon": "fa-video-camera",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
