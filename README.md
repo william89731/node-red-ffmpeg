@@ -11,7 +11,7 @@ ffmpeg command in docker container
 ### Docker environment
 
 ```required:```
-- [docker](https://docs.docker.com/get-docker/) installed in your machine
+- [docker](https://docs.docker.com/get-docker/) 
 - [docker compose ](https://docs.docker.com/compose/)
 
 ```for testing:```
@@ -31,15 +31,27 @@ try latest docker [image](https://hub.docker.com/r/william1608/node-red-ffmpeg/t
  
  [here](https://github.com/william89731/node-red-ffmpeg/blob/main/docker-compose.yml) compose file example
 
+ in terminal:
+
+ ```bash
+docker compose up -d
+```
+
 ```Run nvr```
+
+nodes you need:
+
+- node-red-contrib-vision-ai
+- node-red-contrib-image-output
+- node-red-contrib-telegrambot
+- node-red-dashboard
+- node-red-node-base64
 
 this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/nvr.json) run nvr (mode live view/mode record),object detection and send image to telegram:  
  
 ![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/53d27bd4-a421-47da-b6a4-a6fc22858a84)
 
-
 show in dashboard your cams:
-
 
 ![video6026190723785690644](https://github.com/william89731/node-red-ffmpeg/assets/68069659/98c3d144-fca4-4fd5-951b-1c21b7ba5682)
 
