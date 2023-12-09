@@ -40,7 +40,23 @@ this [flow] run nvr (mode live view/mode record),object detection and send image
 
 show in dashboard your cams:
 
-![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/5eb7a2d1-0498-4a86-a786-c2340d8d0f9a)
+
+![video6026190723785690644](https://github.com/william89731/node-red-ffmpeg/assets/68069659/98c3d144-fca4-4fd5-951b-1c21b7ba5682)
+
+### TO DO
+
+- kubernetes environment
+- arm build
+- another scenario machine learning in nodeRed
+
+### Credits
+
+- nodered team for this [project](https://github.com/node-red/node-red-docker/tree/master/docker-custom)
+- [@good-i-deer/node-red-contrib-vision-ai](https://github.com/GOOD-I-DEER/node-red-contrib-vision-ai)
+- [node-red-contrib-image-output](https://github.com/rikukissa/node-red-contrib-image-output)
+- [node-red-contrib-telegrambot](https://github.com/windkh/node-red-contrib-telegrambot)
+- [node-red-node-base64](https://github.com/node-red/node-red-nodes/blob/master/parsers/base64/README.md)
+
 
 
 
