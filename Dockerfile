@@ -11,6 +11,7 @@ COPY scripts/*.sh /tmp/
 # Install tools, create Node-RED app and data dir, add user and set rights
 RUN set -ex && \
     apt-get update && apt-get install -y \
+        iputils-ping \
         ffmpeg \
         bash \
         tzdata \

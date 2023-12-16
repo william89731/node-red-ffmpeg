@@ -1,6 +1,6 @@
 {
     "name": "node-red-ffmpeg",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "ffmpeg command in nodered docker container",
     "homepage": "https://github.com/william89731",
     "license": "Apache-2.0",
