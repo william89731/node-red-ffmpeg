@@ -1,0 +1,5 @@
+{
+    "trivy.binaryPath": "/usr/local/bin/trivy",
+    "trivy.debug": true,
+    "trivy.minimumReportedSeverity": "HIGH"
+}
