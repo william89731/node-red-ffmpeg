@@ -1,6 +1,6 @@
 {
     "name": "node-red-ffmpeg",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "ffmpeg command in nodered docker container",
     "homepage": "https://github.com/william89731",
     "license": "Apache-2.0",
@@ -10,9 +10,7 @@
     },
     "main": "node_modules/node-red/red/red.js",
     "scripts": {
-        "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS",
-        "debug": "node --inspect=0.0.0.0:9229 $NODE_OPTIONS node_modules/node-red/red.js $FLOWS",
-        "debug_brk": "node --inspect=0.0.0.0:9229 --inspect-brk $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
+        "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS --userDir=/data"
     },
     "contributors": [
         {
