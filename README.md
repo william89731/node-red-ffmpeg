@@ -53,7 +53,7 @@ nodes you need:
 - node-red-dashboard
 - node-red-node-base64
 
-this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/nvr.json) run nvr (mode live view/mode record),human detection and send image to telegram:  
+this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/human.json) run nvr (mode live view/mode record),human detection and send image to telegram:  
  
 ![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/e3578407-26d3-4d20-8394-9c2ca6ee4f2e)
 
