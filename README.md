@@ -8,6 +8,12 @@
 # node-red-ffmpeg
 ffmpeg command in docker container
 
+### Security check
+
+I cooked this custom image using only the necessary dependencies and used [trivy](https://github.com/aquasecurity/trivy) to scan for any vulnerabilities
+
+![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/4ce35152-bef5-4acf-9eb2-3f3394ad0d98)
+
 ### Docker environment
 
 ```required:```
@@ -37,23 +43,25 @@ try latest docker [image](https://hub.docker.com/r/william1608/node-red-ffmpeg/t
 docker compose up -d
 ```
 
-```Run nvr```
+```Human Detection```
 
 nodes you need:
 
-- node-red-contrib-vision-ai
+- node-red-contrib-object-detection
 - node-red-contrib-image-output
 - node-red-contrib-telegrambot
 - node-red-dashboard
 - node-red-node-base64
 
-this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/nvr.json) run nvr (mode live view/mode record),object detection and send image to telegram:  
+this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/nvr.json) run nvr (mode live view/mode record),human detection and send image to telegram:  
  
-![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/53d27bd4-a421-47da-b6a4-a6fc22858a84)
+![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/e3578407-26d3-4d20-8394-9c2ca6ee4f2e)
+
 
 show in dashboard your cams:
 
-![video6026190723785690644](https://github.com/william89731/node-red-ffmpeg/assets/68069659/98c3d144-fca4-4fd5-951b-1c21b7ba5682)
+![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/6d841c8a-3c2d-4268-a8b8-2ce3c977354c)
+
 
 ### TO DO
 
