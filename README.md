@@ -58,17 +58,6 @@ this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/human.json
  
 ![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/e3578407-26d3-4d20-8394-9c2ca6ee4f2e)
 
-```Object detection (only docker environment)```
-
-nodes you need:
-
-- node-red-contrib-object-detection
-- node-red-contrib-image-output
-- node-red-contrib-telegrambot
-- node-red-dashboard
-- node-red-node-base64
-
-
 
 show in dashboard your cams:
 
