@@ -593,7 +593,7 @@
         "z": "4027a9ee66132407",
         "g": "6d05f6a39049b874",
         "name": "alert",
-        "func": "let frame = msg.payload;\n\nmsg.payload = []\nmsg.payload.chatId = \"xxxxxxxxxxxxxxxx\";\nmsg.payload.type = \"photo\";\nmsg.payload.content = frame\nmsg.payload.caption = \"persona no autorizada\";\nreturn msg;",
+        "func": "let frame = msg.payload;\n\nmsg.payload = []\nmsg.payload.chatId = \"xxxxxxxxxxxxxxxx\";\nmsg.payload.type = \"photo\";\nmsg.payload.content = frame\nmsg.payload.caption = \"person found!\";\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
