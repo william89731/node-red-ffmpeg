@@ -48,19 +48,15 @@ docker compose up -d
 
 nodes you need:
 
-- @good-i-deer/node-red-contrib-object-detection
+- node-red-contrib-object-detection
 - node-red-contrib-image-output
 - node-red-contrib-telegrambot
 - node-red-dashboard
 - node-red-node-base64
 
-this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/human.json) run nvr (mode live view/mode record) and human detection:  
+this [flow](https://github.com/william89731/node-red-ffmpeg/blob/main/human.json) run nvr (mode live view/mode record),human detection and send image to telegram:  
  
 ![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/e3578407-26d3-4d20-8394-9c2ca6ee4f2e)
-
-and send to telegram:
-
-![image](https://github.com/william89731/node-red-ffmpeg/assets/68069659/914195cd-c6b7-411c-b561-b49651eb23c1)
 
 
 show in dashboard your cams:
@@ -76,7 +72,8 @@ show in dashboard your cams:
 
 ### Credits
 
-- [@good-i-deer/node-red-contrib-object-detection](https://flows.nodered.org/node/@good-i-deer/node-red-contrib-object-detection)
+- nodered team for this [project](https://github.com/node-red/node-red-docker/tree/master/docker-custom)
+- [@good-i-deer/node-red-contrib-vision-ai](https://github.com/GOOD-I-DEER/node-red-contrib-vision-ai)
 - [node-red-contrib-image-output](https://github.com/rikukissa/node-red-contrib-image-output)
 - [node-red-contrib-telegrambot](https://github.com/windkh/node-red-contrib-telegrambot)
 - [node-red-node-base64](https://github.com/node-red/node-red-nodes/blob/master/parsers/base64/README.md)
