@@ -66,7 +66,7 @@ ENV YARN_VERSION 1.22.19
 
 RUN set -ex \
     && savedAptMark="$(apt-mark showmanual)" \
-    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr --no-install-recommends \
+    && apt-get update && apt-get install -y ca-certificates curl wget gnupg dirmngr  --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     # use pre-existing gpg directory, see https://github.com/nodejs/docker-node/pull/1895#issuecomment-1550389150
     && export GNUPGHOME="$(mktemp -d)" \
@@ -100,6 +100,13 @@ RUN set -ex \
     && yarn --version
 
 RUN set -ex && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    bash \
+    openssh-client && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+
+RUN set -ex && \
     mkdir -p /usr/src/node-red /data && \
     # deluser --remove-home node && \
     useradd --home-dir /usr/src/node-red nodered && \
@@ -108,7 +115,8 @@ RUN set -ex && \
 
 WORKDIR /usr/src/node-red
 
-COPY package.json . 
+COPY package.json .
+
 COPY entrypoint.sh .
 
 RUN set -ex && \ 
