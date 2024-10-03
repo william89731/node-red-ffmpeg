@@ -3,7 +3,7 @@
 ##########
 FROM ubuntu:22.04 AS base
 
-ENV NODE_VERSION 21.7.1
+ENV NODE_VERSION 22.9.0
 
 RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && case "${dpkgArch##*-}" in \
@@ -62,7 +62,8 @@ RUN ARCH= OPENSSL_ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && node --version \
     && npm --version
 
-ENV YARN_VERSION 1.22.19
+ENV YARN_VERSION 1.22.22
+
 
 RUN set -ex \
     && savedAptMark="$(apt-mark showmanual)" \
@@ -119,16 +120,16 @@ COPY package.json .
 
 COPY entrypoint.sh .
 
-RUN set -ex && \ 
+RUN set -ex && \
     npm install \
-    --unsafe-perm --no-update-notifier \ 
+    --unsafe-perm --no-update-notifier \
     --no-audit --only=production
 ###########
 #  BUILD  #
 ###########
 FROM base AS build
 
-ENV FFMPEG="ffmpeg-6.1.1"
+ENV FFMPEG="ffmpeg-7.1"
 
 RUN set -ex && \
     apt-get update && apt-get install -y \
